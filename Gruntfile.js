@@ -233,9 +233,6 @@ module.exports = function (grunt) {
             'images/{,*/}*.{webp,gif}',
             'styles/fonts/{,*/}*.*',
           ]
-        }, {
-          src: 'node_modules/apache-server-configs/dist/.htaccess',
-          dest: '<%= yeoman.dist %>/.htaccess'
         }]
       }
     },
