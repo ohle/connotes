@@ -1,3 +1,4 @@
+# vim: foldmethod=syntax foldlevel=1 sw=2 et
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var SERVER_PORT = 9000;
