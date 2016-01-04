@@ -59,6 +59,10 @@ module.exports = function (grunt) {
       test: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
         tasks: ['test:true']
+      },
+      less: {
+        files: ['<%= yeoman.app %>/styles/**/*.less'],
+        tasks: ['less']
       }
     },
     connect: {
@@ -263,6 +267,21 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    less: {
+      dist: {
+        files: { '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/less/main.less' },
+        options: {
+          compress: true
+        }
+      },
+      dev: {
+        files: { '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/less/main.less' },
+        options: {
+          dumpLineNumbers: 'all',
+          sourceMap: true,
+        }
+      }
     }
   });
 
@@ -287,6 +306,7 @@ module.exports = function (grunt) {
         'jst',
         'connect:test',
         'open:test',
+        'less:dev',
         'watch'
       ]);
     }
@@ -297,6 +317,7 @@ module.exports = function (grunt) {
       'jst',
       'connect:livereload',
       'open:server',
+      'less:dev',
       'watch'
     ]);
   });
@@ -324,6 +345,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'createDefaultTemplate',
     'jst',
+    'less:dist',
     'useminPrepare',
     'imagemin',
     'htmlmin',
