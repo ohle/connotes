@@ -55,6 +55,12 @@ module.exports = function (grunt) {
           'test/spec/**/*.js'
         ]
       },
+      typescript: {
+        files: [
+          '<%= yeoman.app %>/typescript/**/*.ts'
+        ],
+        tasks: ['typescript']
+      },
       jst: {
         files: [
           '<%= yeoman.app %>/scripts/templates/*.ejs'
@@ -287,6 +293,16 @@ module.exports = function (grunt) {
           sourceMap: true,
         }
       }
+    },
+    typescript: {
+      base: {
+        src: ['<%= yeoman.app %>/typescript/**/*.ts'],
+        dest: '<%= yeoman.app %>/scripts/main.js',
+        options: {
+          module: 'amd',
+          target: 'es5'
+        }
+      }
     }
   });
 
@@ -351,6 +367,7 @@ module.exports = function (grunt) {
     'createDefaultTemplate',
     'jst',
     'less:dist',
+    'typescript',
     'useminPrepare',
     'imagemin',
     'htmlmin',
