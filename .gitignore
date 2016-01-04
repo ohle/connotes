@@ -6,3 +6,4 @@ app/bower_components
 app/styles/
 .tmp
 test/bower_components/
+yeomanconfig.json
