@@ -27,7 +27,7 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: '/home/ohle/html/pad'
+    dist: grunt.option('distdir') || '/home/ohle/html/pad'
   };
 
   grunt.initConfig({
