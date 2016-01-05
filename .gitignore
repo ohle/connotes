@@ -5,6 +5,7 @@ test/temp
 app/bower_components
 app/styles/
 app/scripts/
+app/typings/
 .tmp
 test/bower_components/
 yeomanconfig.json

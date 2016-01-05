@@ -303,6 +303,14 @@ module.exports = function (grunt) {
           target: 'es5'
         }
       }
+    },
+    tsd: {
+      refresh: {
+        options: {
+          command: 'reinstall',
+          config: 'tsd.json'
+        }
+      }
     }
   });
 
