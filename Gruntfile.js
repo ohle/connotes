@@ -35,6 +35,10 @@ module.exports = function (grunt) {
     yeomanConfig = grunt.file.readJSON(configFile);
   }
 
+  if (grunt.option('dist-path')) {
+    yeomanConfig.dist = grunt.option('dist-path');
+  }
+
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
