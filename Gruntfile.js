@@ -141,6 +141,11 @@ module.exports = function (grunt) {
         }
       }
     },
+    wiredep: {
+      target: {
+        src: [ '<%= yeoman.app %>/index.html' ]
+      }
+    },
     requirejs: {
       dist: {
         // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
