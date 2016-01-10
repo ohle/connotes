@@ -315,6 +315,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'createDefaultTemplate',
+      'typescript',
       'jst',
       'connect:livereload',
       'open:server',
