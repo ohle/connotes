@@ -1,8 +1,62 @@
+@import "flexbox";
+
 body {
     background: #fafafa;
+    font: 24px Helvetica;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
+#container {
+    min-height: 800px;
+    margin: 0px;
+    padding: 0px;
+    .flex-display();
+    .flex-flow(row);
 }
+
+.layoutbox(@color) {
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid darken(@color, 20%);
+    border-radius: 7pt;
+    background: @color;
+}
+
+#container > main {
+    .layoutbox(#dddd88);
+    .flex(3 1 60%); // 60% default width; shrink by up to 3
+    .flex-order(2);
+}
+
+#container > nav {
+    .layoutbox(#ccccff);
+    .flex(1 6 20%);
+    .flex-order(1);
+}
+
+#container > aside {
+    .layoutbox(#ccccff);
+    .flex(1 6 20%);
+    .flex-order(3);
+}
+
+header, footer {
+    min-height: 100px;
+    .layoutbox(#ffeebb);
+}
+
+@media all and (max-width: 640px) {
+    #container, #page {
+        .flex-flow(column);
+    }
+
+    #container > article, #container > nav, #container > aside {
+        .flex-order(0);
+    }
+
+    #container > nav, #container > aside, header, footer {
+        min-height: 50px;
+        max-height: 50px;
+    }
+}
+
+
