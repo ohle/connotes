@@ -9,3 +9,4 @@ app/typings/
 .tmp
 test/bower_components/
 yeomanconfig.json
+tags
