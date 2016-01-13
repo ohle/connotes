@@ -303,6 +303,7 @@ module.exports = function (grunt) {
     if (target === 'test') {
       return grunt.task.run([
         'clean:server',
+        'wiredep',
         'createDefaultTemplate',
         'jst',
         'connect:test',
@@ -314,6 +315,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'wiredep',
       'createDefaultTemplate',
       'typescript',
       'jst',
@@ -329,6 +331,7 @@ module.exports = function (grunt) {
     var testTasks = [
         'clean:server',
         'createDefaultTemplate',
+        'wiredep',
         'jst',
         'connect:test',
         'mocha'
@@ -346,6 +349,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'createDefaultTemplate',
+    'wiredep',
     'jst',
     'less:dist',
     'typescript',
