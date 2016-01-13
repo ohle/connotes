@@ -1,6 +1,5 @@
 /// <reference path="../typings/jquery/jquery.d.ts"/>
-declare var require: any;
-var $: JQueryStatic = require("jquery");
+declare var $: JQueryStatic;
 
 class Greeter {
    constructor(public greeting : string) { }
