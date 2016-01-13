@@ -2,6 +2,7 @@
   "private": true,
   "devDependencies": {
     "apache-server-configs": "^2.8.0",
+    "bower": "^1.7.2",
     "connect-livereload": "^0.4.0",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
@@ -26,12 +27,14 @@
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
     "time-grunt": "^1.0.0",
+    "tsd": "^0.6.5",
     "typescript": "^1.7.5"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-      "test": "grunt test"
+    "test": "grunt test",
+    "postinstall": "tsd install && bower install && cd test && bower install"
   }
 }
