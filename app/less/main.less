@@ -3,7 +3,9 @@
 body {
     background: #fafafa;
     font: 16px;
+    .flex-display();
     .flex-direction(column);
+    height: 100vH;
 }
 
 .layoutbox(@color) {
@@ -16,33 +18,10 @@ body {
 
 main {
     .layoutbox(#dddd88);
-    .flex(3 1 80%);
-    .flex-order(2);
-}
-
-aside {
-    .layoutbox(#ccccff);
-    .flex(1 6 20%);
-    .flex-order(1);
+    .flex(1);
+    overflow-y: scroll;
 }
 
 header {
     .layoutbox(#ffeebb);
 }
-
-@media all and (max-width: 640px) {
-    #container, #page {
-        .flex-flow(column);
-    }
-
-    #container > article, #container > nav, #container > aside {
-        .flex-order(0);
-    }
-
-    #container > nav, #container > aside, header {
-        min-height: 50px;
-        max-height: 50px;
-    }
-}
-
-
