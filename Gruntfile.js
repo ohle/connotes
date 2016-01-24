@@ -220,6 +220,7 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             'images/{,*/}*.{webp,gif}',
             'styles/fonts/{,*/}*.*',
+            'vendor/font-awesome/fonts/{,*/}*.*'
           ]
         }]
       }
