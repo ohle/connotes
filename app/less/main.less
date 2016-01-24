@@ -41,22 +41,41 @@ header {
 }
 
 nav {
+    .flex-display();
+    .justify-content(space-between);
 }
 
 #searchBar {
     .flex-display();
-    max-width: 300px;
+    max-width: 400px;
+    width: 300px;
+    margin: 5px;
     input {
         .flex(1);
         background-color: lighten(@darkGray, 50%);
-        border: 1px solid darken(@darkGray, 110%);
+        border: 1px solid lighten(@darkGray, 70%);
+        font-size: 16px;
+        color: white;
         border-right: 0px;
     }
     button {
         border: 1px solid darken(@darkGray, 110%);
-        border-right: 0px;
+        border: 1px solid lighten(@darkGray, 70%);
         border-radius: 0px;
-        border-left: 0px;
+        // border-left: 0px;
     }
 }
 
+ul.queries {
+    .flex-display();
+    .flex-wrap(wrap);
+    padding: 0px;
+    margin: 5px;
+    li {
+        list-style-type: none;
+        margin: 3px;
+        padding: 3px;
+        background: red;
+        border-radius: 2px;
+    }
+}
