@@ -1,12 +1,21 @@
 @import "flexbox";
 
+html, body {
+    min-height: 100vH;
+    height: 100vH;
+    margin: 0px;
+}
+
 body {
     background: #fafafa;
     font: 16px;
     .flex-display();
     .flex-direction(column);
-    height: 100vH;
 }
+
+@darkGray: #333333;
+@offWhite: #fafafa;
+
 
 .layoutbox(@color) {
     margin: 4px;
@@ -23,5 +32,29 @@ main {
 }
 
 header {
-    .layoutbox(#ffeebb);
+    margin: 0px;
+    background: @darkGray;
+    color: @offWhite;
+
 }
+
+nav {
+}
+
+#searchBar {
+    .flex-display();
+    max-width: 300px;
+    input {
+        .flex(1);
+        background-color: lighten(@darkGray, 50%);
+        border: 1px solid darken(@darkGray, 110%);
+        border-right: 0px;
+    }
+    button {
+        border: 1px solid darken(@darkGray, 110%);
+        border-right: 0px;
+        border-radius: 0px;
+        border-left: 0px;
+    }
+}
+
