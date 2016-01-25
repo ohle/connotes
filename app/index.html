@@ -15,25 +15,32 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <header>
+        <ul class="queries">
+            <li> Query 1 </li>
+            <li> Query 2 </li>
+        </ul>
         <nav>
             <div id="searchBar">
                 <input id="query" type=text placeholder="search"></input>
                 <button id="search"><span class="fa fa-search fa-ls"></span></button>
             </div>
-            <span class="fa-stack fa-lg">
-                <span class="fa fa-square-o fa-stack-2x"></span>
-                <span class="fa fa-bars fa-stack-1x"></span>
-            </span>
+            <a class="fa fa-wrench fa-lg" href="#"></a>
         </nav>
-        <ul class="queries">
-            <li> Query 1 </li>
-            <li> Query 2 </li>
-        </ul>
     </header>
     <main>
     <ul class="notes">
-        <li> Note 1 </li>
-        <li> Note 2 </li>
+        <li class="note"> 
+            <div class="note-header">
+                <span class="title">Title</span>
+                <a class="fa fa-pencil" href="#"></a>
+                <a class="fa fa-trash" href="#"></a>
+            </div>
+            <div class="note-body">Foo bar baz</div>
+        </li>
+        <li class="note"> 
+            <div class="note-header">Title</div>
+            <div class="note-body">Foo bar baz</div>
+        </li>
     </ul>
     </main>
 
