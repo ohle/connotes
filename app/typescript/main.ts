@@ -8,5 +8,6 @@ declare var $: JQueryStatic;
 
 let note = new NoteModel("title", "body");
 
-let query = new q.QueryModel("test");
+let qs = new Backbone.Collection<q.QueryModel>();
 
+let aq = new q.ActiveQueriesView({collection : qs, el: $('header')});
