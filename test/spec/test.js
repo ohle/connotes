@@ -8,4 +8,15 @@
       });
     });
   });
-})();
+
+  describe('QueryModels', function() {
+      var m = new Queries.QueryModel('test');
+      it('should store a query', function() {
+          expect(m.getText()).to.be.equal('test');
+      });
+      it('should allow setting the text', function() {
+          m.setText('foo');
+          expect(m.getText()).to.be.equal('foo');
+      });
+  })
+}());
