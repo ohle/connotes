@@ -16,6 +16,9 @@
     },
     "backbone/backbone-global.d.ts": {
       "commit": "6a6ad7068a177c0d7a8a20830626cb63277191c5"
+    },
+    "mustache/mustache.d.ts": {
+      "commit": "f29bf726a60674dbf24bab06a26403a3871c3f21"
     }
   }
 }

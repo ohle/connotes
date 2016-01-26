@@ -15,6 +15,14 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <header>
+        <script id="queriesTemplate" type="x-tmpl-mustache">
+            {{#nonEmpty}}
+                <li id="remove"><a href="#">remove all</a></li>
+            {{/nonEmpty}}
+            {{#queries}}
+                <li>{{text}}</li>
+            {{/queries}}
+        </script>
         <ul class="queries">
             <li id="remove"><a href="#">remove all</a></li>
             <li> Query 1 </li>
@@ -49,6 +57,7 @@
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/underscore/underscore.js"></script>
     <script src="vendor/backbone/backbone.js"></script>
+    <script src="vendor/mustache.js/mustache.js"></script>
     <!-- endbower -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
