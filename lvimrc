@@ -1,1 +1,1 @@
-let g:TSS = ['tss', '-t', 'es5']
+" let g:TSS = ['tss', '-t', 'es5']
