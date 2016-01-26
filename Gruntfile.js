@@ -60,9 +60,6 @@ module.exports = function (grunt) {
         ]
       },
       typescript: {
-        options: {
-          target: 'es5'
-        },
         files: [
           '<%= yeoman.app %>/typescript/**/*.ts'
         ],
