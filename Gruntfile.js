@@ -321,6 +321,7 @@ module.exports = function (grunt) {
       'typescript',
       'jst',
       'connect:livereload',
+      'connect:test',
       'open:server',
       'less:dev',
       'watch'
