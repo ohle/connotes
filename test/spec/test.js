@@ -25,7 +25,7 @@
       element.append(searchBar);
       element.append(removeButton);
       element.append(template);
-      var aq = new Queries.ActiveQueriesView({collection: qs, el: element});
+      var aq = new Queries.QueriesView({collection: qs, el: element});
       it('should add all confirmed queries to the list', function() {
           expect(list.children().length).to.equal(0);
           qs.add(new Queries.QueryModel('test'));

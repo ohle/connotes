@@ -26,7 +26,7 @@ module Queries {
 
     }
 
-    export class ActiveQueriesView extends bb.View<QueryModel> {
+    export class QueriesView extends bb.View<QueryModel> {
 
         queries : bb.Collection<QueryModel>;
         searchBar : JQuery;

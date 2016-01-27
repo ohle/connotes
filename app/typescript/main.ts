@@ -10,4 +10,4 @@ let note = new NoteModel("title", "body");
 
 let qs = new Backbone.Collection<q.QueryModel>();
 
-let aq = new q.ActiveQueriesView({collection : qs, el: $('header')});
+let aq = new q.QueriesView({collection : qs, el: $('header')});
