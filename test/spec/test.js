@@ -12,19 +12,6 @@
       });
   });
 
-  describe('QueryView', function() {
-      var m = new Queries.QueryModel('test');
-      var e = $('<div>');
-      var v = new Queries.QueryView({model: m, el: e});
-      it('should set the element html to the query text', function() {
-          expect(e.html()).to.equal(m.getText());
-      });
-      it('should update the html when the query text changes', function() {
-          m.setText('foo');
-          expect(e.html()).to.equal(m.getText());
-      });
-  });
-
   describe('ActiveQueriesView', function() {
       var qs = new Backbone.Collection();
       var element = $('<div>');

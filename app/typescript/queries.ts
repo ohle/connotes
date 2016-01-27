@@ -26,26 +26,6 @@ module Queries {
 
     }
 
-    export class QueryView extends bb.View<QueryModel> {
-        private element : JQuery;
-
-        initialize() {
-            this.render();
-            this.listenTo(this.model, "change", this.render);
-        }
-
-        events() : bb.EventsHash {
-            return {
-                "click": this.model.destroy
-            }
-        }
-
-        render() {
-            this.$el.html(_.escape(this.model.getText()));
-            return this;
-        }
-    }
-
     export class ActiveQueriesView extends bb.View<QueryModel> {
 
         queries : bb.Collection<QueryModel>;
