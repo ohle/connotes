@@ -16,9 +16,9 @@
     <![endif]-->
     <header>
         <script id="queriesTemplate" type="x-tmpl-mustache">
-            {{#nonEmpty}}
+            {{#queries.length}}
                 <li id="remove"><a href="#">remove all</a></li>
-            {{/nonEmpty}}
+            {{/queries.length}}
             {{#queries}}
                 <li>{{text}}</li>
             {{/queries}}

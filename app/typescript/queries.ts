@@ -78,8 +78,7 @@ module Queries {
 
         render() {
             let result : string = Mustache.render(
-                this.template, { nonEmpty : (this.collection.length > 1),
-                                 queries : this.collection
+                this.template, { queries : this.collection
                                                .slice(0, this.collection.length - 1)
                                                .map(q => q.toJSON())
             });
