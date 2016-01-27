@@ -20,6 +20,7 @@
       var removeButton = $('<a>').attr('id', 'remove');
       var template = $('<script>').attr('type', 'x-tmpl-mustache')
                                   .attr('id', 'queriesTemplate');
+      var testQuery = new Queries.QueryModel('test');
       template.html('{{#queries}}<li>{#text}</li>{{/queries}}');
       element.append(list);
       element.append(searchBar);
@@ -31,11 +32,17 @@
           expect(list.children().length).to.equal(0);
           qs.add(new Queries.QueryModel('test'));
           expect(list.children().length).to.equal(1);
-          var last = new Queries.QueryModel('test');
-          qs.add(last);
+          qs.add(testQuery);
           expect(list.children().length).to.equal(2);
-          qs.remove(last);
+      });
+      it('should remove deleted queries', function() {
+          qs.remove(testQuery);
           expect(list.children().length).to.equal(1);
       });
+      it('should not add bogus entries', function() {
+          testQuery.setText('foo');
+          expect(list.children().length).to.equal(1);
+      });
+
   });
 }());
