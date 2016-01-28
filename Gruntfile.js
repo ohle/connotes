@@ -309,6 +309,7 @@ module.exports = function (grunt) {
     var testTasks = [
         'clean:server',
         'wiredep',
+        'typescript',
         'connect:test',
         'mocha'
       ];
