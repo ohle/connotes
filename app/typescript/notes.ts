@@ -1,6 +1,7 @@
 /// <reference path="../typings/backbone/backbone.d.ts"/>
+import bb = Backbone
 
-class NoteModel extends Backbone.Model {
+class NoteModel extends bb.Model {
     title : string;
     body : string;
 
