@@ -78,6 +78,8 @@
       });
 
       it('should reset properly', function() {
+          setQueries(['Foo']);
+          expect(fn.contains(bazQuux)).to.be.false;
           setQueries(['Baz']);
           expect(fn.contains(bazQuux)).to.be.true;
       });
