@@ -91,7 +91,6 @@ module Notes {
         }
 
         private removeQuery(removed : Queries.QueryModel) {
-            console.log(this.queries.filter(q => q != removed));
             this.updateWithQueries(this.queries.filter(q => q != removed));
         }
         
