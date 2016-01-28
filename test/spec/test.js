@@ -46,8 +46,8 @@
   });
 
   describe('FilteredNotes', function() {
-      var notes = new Backbone.Collection({ model: Notes.NoteModel });
-      var queries = new Backbone.Collection({ model : Queries.QueryModel });
+      var notes = new Backbone.Collection();
+      var queries = new Backbone.Collection();
 
       var fooBar = new Notes.NoteModel('Foo', 'Bar');
       var bazQuux = new Notes.NoteModel('Baz', 'Quux');
@@ -96,6 +96,26 @@
           expect(fn.length).to.be.equal(2);
           expect(fn.at(0)).to.be.equal(bazQuux);
           expect(fn.at(1)).to.be.equal(barFrob);
+      });
+
+      it('should react to added and removed notes', function() {
+          setQueries(['Foo']);
+          expect(fn.length).to.be.equal(1);
+          var n = new Notes.NoteModel("Test", "Food");
+          notes.add(n);
+          expect(fn.length).to.be.equal(2);
+          expect(fn.contains(n)).to.be.true;
+          notes.remove(n);
+          expect(fn.contains(n)).to.be.false;
+      });
+
+      it('should react to changed notes', function() {
+          setQueries(['Foo']);
+          expect(fn.contains(fooBar).to.be.true);
+          fooBar.setTitle('Test');
+          expect(fn.contains(fooBar).to.be.false);
+          fooBar.setTitle('Foo');
+          expect(fn.contains(fooBar).to.be.true);
       });
   });
 }());
