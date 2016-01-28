@@ -121,7 +121,7 @@
       it('should react to removal of queries', function() {
           setQueries(['Foo', 'Bar']);
           expect(fn.length).to.be.equal(2);
-          queries.remove(queries.first());
+          queries.remove(queries.at(1));
           expect(fn.length).to.be.equal(1);
       });
   });
