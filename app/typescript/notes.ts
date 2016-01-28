@@ -2,6 +2,7 @@
 
 module Notes {
     import bb = Backbone;
+
     export class NoteModel extends bb.Model {
         title : string;
         body : string;
