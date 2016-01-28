@@ -113,11 +113,11 @@
 
       it('should react to changed notes', function() {
           setQueries(['Foo']);
-          expect(fn.contains(fooBar).to.be.true);
+          expect(fn.contains(fooBar)).to.be.true;
           fooBar.setTitle('Test');
-          expect(fn.contains(fooBar).to.be.false);
+          expect(fn.contains(fooBar)).to.be.false;
           fooBar.setTitle('Foo');
-          expect(fn.contains(fooBar).to.be.true);
+          expect(fn.contains(fooBar)).to.be.true;
       });
 
       it('should react to removal of queries', function() {
