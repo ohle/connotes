@@ -44,4 +44,56 @@
           expect(list.children().length).to.equal(1);
       });
   });
+
+  describe('FilteredNotes', function() {
+      var notes = new Backbone.Collection({ model: Notes.NoteModel });
+      var queries = new Backbone.Collection({ model : Queries.QueryModel });
+
+      var fooBar = new Notes.NoteModel('Foo', 'Bar');
+      var bazQuux = new Notes.NoteModel('Baz', 'Quux');
+      var barFrob = new Notes.NoteModel('Bar', 'Frobnicate');
+      var test = new Notes.NoteModel('Test', 'Note');
+      notes.add(fooBar);
+      notes.add(bazQuux);
+      notes.add(barFrob);
+      notes.add(test);
+
+      var fn = new Notes.FilteredNotes(queries, notes);
+
+      var setQueries = function(texts) {
+          queries.reset(_.map(texts, function(text) {
+              return new Queries.QueryModel(text);
+          }));
+      };
+
+      it('should not filter anything when there are no queries', function() {
+          expect(fn.length).to.equal(notes.length);
+      });
+
+      it('should match on title and content', function() {
+          setQueries(['Bar']);
+          expect(fn.length).to.be.equal(2);
+          expect(fn.contains(fooBar)).to.be.true;
+          expect(fn.contains(barFrob)).to.be.true;
+      });
+
+      it('should reset properly', function() {
+          setQueries(['Baz']);
+          expect(fn.contains(bazQuux)).to.be.true;
+      });
+
+      it('should OR its component queries', function() {
+          setQueries(['Baz', 'Frobnicate']);
+          expect(fn.length).to.be.equal(2);
+          expect(fn.contains(bazQuux)).to.be.true;
+          expect(fn.contains(barFrob)).to.be.true;
+      });
+
+      it('should preserve the order of the underlying notes', function() {
+          setQueries(['Frobnicate', 'Baz']);
+          expect(fn.length).to.be.equal(2);
+          expect(fn.at(0)).to.be.equal(bazQuux);
+          expect(fn.at(1)).to.be.equal(barFrob);
+      });
+  });
 }());
