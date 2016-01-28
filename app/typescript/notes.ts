@@ -41,7 +41,7 @@ module Notes {
 
         constructor(queries : bb.Collection<Queries.QueryModel>,
                     notes : bb.Collection<NoteModel>) {
-            super();
+            super(notes.models);
             this.queries = queries;
             this.notes = notes;
         }
