@@ -4,13 +4,12 @@
 
 module Queries {
     import bb = Backbone;
-    export interface IQuery {
-        text : string
+    export interface Query {
+        getText() : string;
+        setText(t :string);
     }
 
-    export class QueryModel extends bb.Model implements IQuery {
-        text : string;
-
+    export class QueryModel extends bb.Model implements Query {
         initialize(text : string) {
             this.setText(text);
         }
