@@ -67,7 +67,7 @@ module Queries {
             return this;
         }
 
-        keyUp(event) {
+        private keyUp(event) {
             if (event.keyCode === 13) {
                 this.collection.add(new QueryModel(""));
                 this.searchBar.val("");
@@ -76,7 +76,7 @@ module Queries {
             }
         }
 
-        empty() {
+        private empty() {
             this.collection.reset();
             this.render();
         }
