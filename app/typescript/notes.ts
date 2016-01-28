@@ -4,7 +4,14 @@
 module Notes {
     import bb = Backbone;
 
-    export class NoteModel extends bb.Model {
+    export interface Note {
+        getTitle() : string;
+        setTitle(t : string) : void;
+        getBody() : string;
+        setBody(b : string) : void;
+    }
+
+    export class NoteModel extends bb.Model implements Note {
         title : string;
         body : string;
 
