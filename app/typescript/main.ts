@@ -3,10 +3,11 @@
 /// <reference path="queries.ts"/>
 
 import q = Queries;
+import n = Notes;
 
 declare var $: JQueryStatic;
 
-let note = new NoteModel("title", "body");
+let note = new n.NoteModel("title", "body");
 
 let qs = new Backbone.Collection<q.QueryModel>();
 

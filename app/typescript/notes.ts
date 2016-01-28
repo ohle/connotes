@@ -1,29 +1,31 @@
 /// <reference path="../typings/backbone/backbone.d.ts"/>
-import bb = Backbone
 
-class NoteModel extends bb.Model {
-    title : string;
-    body : string;
+module Notes {
+    import bb = Backbone;
+    export class NoteModel extends bb.Model {
+        title : string;
+        body : string;
 
-    constructor(title : string, body : string) {
-        super();
-        this.setTitle(title);
-        this.setBody(body);
-    }
+        constructor(title : string, body : string) {
+            super();
+            this.setTitle(title);
+            this.setBody(body);
+        }
 
-    getTitle() : string {
-        return super.get("title");
-    }
+        getTitle() : string {
+            return super.get("title");
+        }
 
-    setTitle(t : string) {
-        super.set("title", t);
-    }
+        setTitle(t : string) {
+            super.set("title", t);
+        }
 
-    getBody(): string {
-        return super.get("body");
-    }
+        getBody(): string {
+            return super.get("body");
+        }
 
-    setBody(b : string) {
-        super.set("body", b);
+        setBody(b : string) {
+            super.set("body", b);
+        }
     }
 }

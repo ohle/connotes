@@ -2,9 +2,8 @@
 /// <reference path="../typings/underscore/underscore.d.ts"/>
 /// <reference path="../typings/mustache/mustache.d.ts"/>
 
-import bb = Backbone;
-
 module Queries {
+    import bb = Backbone;
     export interface IQuery {
         text : string
     }
