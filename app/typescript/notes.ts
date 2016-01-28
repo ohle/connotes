@@ -63,6 +63,10 @@ module Notes {
             this.update();
         }
 
+        countFiltered() : number {
+            return this.notes.length - this.length;
+        }
+
         // Just rebuild the filtered list on every change to the notes or
         // queries. Could be optimized by keeping a cache of filtered lists for
         // each query and responding to add/remove/changed events of both

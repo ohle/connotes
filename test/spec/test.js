@@ -124,5 +124,12 @@
           queries.remove(queries.at(1));
           expect(fn.length).to.be.equal(1);
       });
+
+      it('should report number of filteret notes', function() {
+          setQueries([]);
+          expect(fn.countFiltered()).to.be.equal(0);
+          setQueries(['flskjfdljsdflj']);
+          expect(fn.countFiltered()).to.be.equal(notes.length);
+      });
   });
 }());
