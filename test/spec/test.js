@@ -99,9 +99,11 @@
       });
 
       it('should react to added and removed notes', function() {
+          console.log("resetting queries")
           setQueries(['Foo']);
           expect(fn.length).to.be.equal(1);
           var n = new Notes.NoteModel("Test", "Food");
+          console.log("adding note");
           notes.add(n);
           expect(fn.length).to.be.equal(2);
           expect(fn.contains(n)).to.be.true;
@@ -116,6 +118,13 @@
           expect(fn.contains(fooBar).to.be.false);
           fooBar.setTitle('Foo');
           expect(fn.contains(fooBar).to.be.true);
+      });
+
+      it('should react to removal of queries', function() {
+          setQueries(['Foo', 'Bar']);
+          expect(fn.length).to.be.equal(2);
+          queries.remove(queries.first());
+          expect(fn.length).to.be.equal(1);
       });
   });
 }());
