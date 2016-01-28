@@ -43,6 +43,5 @@
           testQuery.setText('foo');
           expect(list.children().length).to.equal(1);
       });
-
   });
 }());
