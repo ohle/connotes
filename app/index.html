@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- vim: set ft=html.mustache: -->
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
@@ -15,12 +16,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <header>
-        <script id="queriesTemplate" type="x-tmpl-mustache">
+        <script id="queriesTemplate" type="text/mustache">
             {{#queries.length}}
                 <li id="remove"><a href="#">remove all</a></li>
             {{/queries.length}}
             {{#queries}}
-                <li>{{text}}</li>
+                <li><a href="#">{{text}}</a></li>
             {{/queries}}
         </script>
         <ul class="queries">
