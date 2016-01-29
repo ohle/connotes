@@ -11,4 +11,4 @@ let note = new n.NoteModel("title", "body");
 
 let qs = new Backbone.Collection<q.QueryModel>();
 
-// let aq = new q.QueriesView({collection : qs, el: $('header')});
+let aq = new q.QueriesView({collection : qs, el: $('header')});

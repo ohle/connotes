@@ -24,6 +24,25 @@ module Queries {
 
     }
 
+    class QueryView extends bb.View<QueryModel> {
+        template : string;
+
+        constructor(options) {
+            options.tagName = "li";
+            super(options);
+        }
+
+        initialize() {
+            this.template = $('#queryTemplate').html();
+            Mustache.parse(this.template);
+        }
+
+        render() {
+            $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
+            return this;
+        }
+    }
+
     export class QueriesView extends bb.View<QueryModel> {
 
         queries : bb.Collection<QueryModel>;
@@ -40,7 +59,7 @@ module Queries {
 
             Mustache.parse(this.template);
 
-            this.listenTo(this.collection, "change", this.render);
+            // this.listenTo(this.collection, "change", this.render);
             this.listenTo(this.collection, "add", this.render);
             this.listenTo(this.collection, "remove", this.render);
 
@@ -55,12 +74,15 @@ module Queries {
         }
 
         render() {
-            let result : string = Mustache.render(
-                this.template, { queries : this.collection
-                                               .slice(0, this.collection.length - 1)
-                                               .map(q => q.toJSON())
-            });
+            let completed = this.collection.slice(0, this.collection.length - 1);
+            let result = Mustache.render(this.template, completed);
             this.list.html(result);
+            _.each(completed, (q : QueryModel, idx : number) => {
+                let v = new QueryView({model : q});
+                v.render();
+                this.list.append(v.el);
+            });
+
 
             return this;
         }

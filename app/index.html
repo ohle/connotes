@@ -17,12 +17,12 @@
     <![endif]-->
     <header>
         <script id="queriesTemplate" type="text/mustache">
-            {{#queries.length}}
+            {{#length}}
                 <li id="remove"><a href="#">remove all</a></li>
-            {{/queries.length}}
-            {{#queries}}
-                <li><a href="#">{{text}}</a></li>
-            {{/queries}}
+            {{/length}}
+        </script>
+        <script id="queryTemplate" type="text/mustache">
+            <a class="query" href="#">{{text}}</a>
         </script>
         <ul class="queries">
             <li id="remove"><a href="#">remove all</a></li>

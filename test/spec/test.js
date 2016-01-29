@@ -21,11 +21,15 @@
       var template = $('<script>').attr('type', 'x-tmpl-mustache')
                                   .attr('id', 'queriesTemplate');
       var testQuery = new Queries.QueryModel('test');
-      template.html('{{#queries}}<li>{#text}</li>{{/queries}}');
+      template.html('');
+      var qTemplate = $('<script>').attr('type', 'x-tmpl-mustache')
+                                   .attr('id', 'queryTemplate');
+      qTemplate.html("{{text}}");
       element.append(list);
       element.append(searchBar);
       element.append(removeButton);
       element.append(template);
+      $('body').append(qTemplate);
       var aq = new Queries.QueriesView({collection: qs, el: element});
 
       it('should add all confirmed queries to the list', function() {
