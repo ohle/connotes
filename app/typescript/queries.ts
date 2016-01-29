@@ -32,6 +32,12 @@ module Queries {
             super(options);
         }
 
+        events() : bb.EventsHash {
+            return {
+                "click a" : this.removeElement
+            }
+        }
+
         initialize() {
             this.template = $('#queryTemplate').html();
             Mustache.parse(this.template);
@@ -40,6 +46,10 @@ module Queries {
         render() {
             $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
             return this;
+        }
+
+        removeElement() {
+            this.model.destroy();
         }
     }
 
