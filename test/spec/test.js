@@ -129,7 +129,7 @@
           expect(fn.length).to.be.equal(1);
       });
 
-      it('should report number of filteret notes', function() {
+      it('should report number of filtered notes', function() {
           setQueries([]);
           expect(fn.countFiltered()).to.be.equal(0);
           setQueries(['flskjfdljsdflj']);
