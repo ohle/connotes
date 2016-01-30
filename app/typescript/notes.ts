@@ -72,9 +72,12 @@ module Notes {
 
         initialize() {
             this.render();
+
+            this.listenTo(this.collection, "add remove change reset", this.render);
         }
 
         render() {
+            this.$el.empty();
             this.collection.each( (n : NoteModel, idx : number) => {
                 let nv = new NoteView({ model : n });
                 nv.render();
@@ -120,16 +123,18 @@ module Notes {
         // every keypress, as opposed to O(N_notes) for the fine-grained
         // solution).
         private updateWithQueries(queries : Queries.QueryModel[]) {
-            if (queries.length == 0) {
+            let nonEmptyQueries = queries.filter( (q, i) => q.getText().length > 0 );
+            console.log(nonEmptyQueries);
+            if (nonEmptyQueries.length == 0) {
                 this.reset(this.notes.models);
                 return;
             }
+            this.reset();
+                                   
             this.notes.forEach( (n : NoteModel, idx :number) => {
-                if (_.any(queries,  (q, i) => this.matches(q, n) )) {
+                if (_.every(nonEmptyQueries,  q => this.matches(q, n))) {
                     this.add(n); // will be ignored if already in
-                } else {
-                    this.remove(n);
-                }
+                } 
             });
         }
 
