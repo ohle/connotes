@@ -47,6 +47,12 @@
           testQuery.setText('foo');
           expect(list.children().length).to.equal(1);
       });
+      it('should not add empty queries', function() {
+          var before = list.children().length;
+          searchBar.val('');
+          aq.keyUp({keyCode : 13});
+          expect(list.children().length).to.equal(before);
+      });
   });
 
   describe('FilteredNotes', function() {

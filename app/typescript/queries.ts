@@ -98,8 +98,10 @@ module Queries {
 
         private keyUp(event) {
             if (event.keyCode === 13) {
-                this.collection.add(new QueryModel(""));
-                this.searchBar.val("");
+                if (this.searchBar.val() !== "") {
+                    this.collection.add(new QueryModel(""));
+                    this.searchBar.val("");
+                }
             } else {
                 this.collection.last().setText(this.searchBar.val());
             }
