@@ -93,7 +93,6 @@ module Queries {
                 this.list.append(v.el);
             });
 
-
             return this;
         }
 
