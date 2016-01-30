@@ -94,17 +94,16 @@
           expect(fn.contains(bazQuux)).to.be.true;
       });
 
-      it('should OR its component queries', function() {
-          setQueries(['Baz', 'Frobnicate']);
-          expect(fn.length).to.be.equal(2);
+      it('should AND its component queries', function() {
+          setQueries(['Ba', 'x']);
+          expect(fn.length).to.be.equal(1);
           expect(fn.contains(bazQuux)).to.be.true;
-          expect(fn.contains(barFrob)).to.be.true;
       });
 
       it('should preserve the order of the underlying notes', function() {
-          setQueries(['Frobnicate', 'Baz']);
+          setQueries(['F']);
           expect(fn.length).to.be.equal(2);
-          expect(fn.at(0)).to.be.equal(bazQuux);
+          expect(fn.at(0)).to.be.equal(fooBar);
           expect(fn.at(1)).to.be.equal(barFrob);
       });
 
@@ -130,9 +129,9 @@
 
       it('should react to removal of queries', function() {
           setQueries(['Foo', 'Bar']);
-          expect(fn.length).to.be.equal(2);
-          queries.remove(queries.at(1));
           expect(fn.length).to.be.equal(1);
+          queries.remove(queries.at(0));
+          expect(fn.length).to.be.equal(2);
       });
 
       it('should report number of filtered notes', function() {
