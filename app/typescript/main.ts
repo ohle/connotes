@@ -17,4 +17,6 @@ let aq = new q.QueriesView({collection : qs, el: $('header')});
 let notes = new Backbone.Collection<n.NoteModel>();
 notes.add(note1);
 notes.add(note2);
-let nv = new n.NotesView({ collection : notes, el: $('ul.notes') });
+note2.setEditing(true);
+let filtered = new n.FilteredNotes(qs, notes);
+let nv = new n.NotesView({ collection : filtered, el: $('ul.notes') });
