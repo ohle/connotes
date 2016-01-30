@@ -7,8 +7,14 @@ import n = Notes;
 
 declare var $: JQueryStatic;
 
-let note = new n.NoteModel("title", "body");
+let note1 = new n.NoteModel("title", "body");
+let note2 = new n.NoteModel("foo", "bar");
 
 let qs = new Backbone.Collection<q.QueryModel>();
 
 let aq = new q.QueriesView({collection : qs, el: $('header')});
+
+let notes = new Backbone.Collection<n.NoteModel>();
+notes.add(note1);
+notes.add(note2);
+let nv = new n.NotesView({ collection : notes, el: $('ul.notes') });

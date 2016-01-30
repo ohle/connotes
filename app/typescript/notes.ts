@@ -11,16 +11,20 @@ module Notes {
         setTitle(t : string) : void;
         getBody() : string;
         setBody(b : string) : void;
+        isBeingEdited() : boolean;
+        setEditing(e : boolean) : void;
     }
 
     export class NoteModel extends bb.Model implements Note {
         title : string;
         body : string;
+        editing : boolean;
 
         constructor(title : string, body : string) {
             super();
             this.setTitle(title);
             this.setBody(body);
+            this.setEditing(false);
         }
 
         getTitle() : string {
@@ -37,6 +41,46 @@ module Notes {
 
         setBody(b : string) {
             super.set("body", b);
+        }
+
+        isBeingEdited() {
+            return super.get("editing");
+        }
+
+        setEditing(e : boolean) {
+            super.set("editing", e);
+        }
+    }
+
+    export class NoteView extends bb.View<NoteModel> {
+        template : string;
+
+        constructor(options) {
+            options.tagName = "li";
+            options.className = "note";
+            super(options);
+            this.template = $('#noteTemplate').html();
+        }
+
+        render() {
+            $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
+            return this;
+        }
+    }
+
+    export class NotesView extends bb.View<NoteModel> {
+
+        initialize() {
+            this.render();
+        }
+
+        render() {
+            this.collection.each( (n : NoteModel, idx : number) => {
+                let nv = new NoteView({ model : n });
+                nv.render();
+                this.$el.append(nv.el);
+            });
+            return this;
         }
     }
 
