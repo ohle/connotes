@@ -108,7 +108,7 @@ module Queries {
         }
 
         private empty() {
-            this.collection.reset();
+            this.collection.reset([new QueryModel("")]);
             this.render();
         }
     }
