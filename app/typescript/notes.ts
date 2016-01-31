@@ -133,7 +133,6 @@ module Notes {
         // solution).
         private updateWithQueries(queries : Queries.QueryModel[]) {
             let nonEmptyQueries = queries.filter( (q, i) => q.getText().length > 0 );
-            console.log(nonEmptyQueries);
             if (nonEmptyQueries.length == 0) {
                 this.reset(this.notes.models);
                 return;
