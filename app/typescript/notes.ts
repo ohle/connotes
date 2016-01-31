@@ -83,6 +83,15 @@ module Notes {
                 nv.render();
                 this.$el.append(nv.el);
             });
+            if (this.collection instanceof FilteredNotes) {
+                let fn = <FilteredNotes> this.collection;
+                let count = fn.countFiltered();
+                if (count > 0) {
+                    $('#filteredCount').html(fn.countFiltered() + " notes filtered");
+                } else {
+                    $('#filteredCount').html('');
+                }
+            }
             return this;
         }
     }
