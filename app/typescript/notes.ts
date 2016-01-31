@@ -62,6 +62,33 @@ module Notes {
             this.template = $('#noteTemplate').html();
         }
 
+        initialize() {
+            this.listenTo(this.model, "change", this.render);
+        }
+
+        events() {
+            return <bb.EventsHash>{
+                'click [data-action="edit"]' : () => { this.model.setEditing(true); },
+                'click [data-action="delete"]' : () => {
+                    if (window.confirm("really delete '" + this.model.getTitle() + "'?")) {
+                        this.model.destroy();
+                    }
+                },
+                'click [data-action="done"]' : () => {
+                    let title = _.unescape(this.$('.title').html());
+                    let body = _.unescape(this.$('.note-body').html());
+                    this.model.setTitle(title);
+                    this.model.setBody(body);
+                    this.model.setEditing(false);
+                },
+                'click [data-action="cancel"]' : () => {
+                    if (window.confirm("Cancel editing?")) {
+                        this.model.setEditing(false);
+                    }
+                }
+            }
+        }
+
         render() {
             $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
             return this;

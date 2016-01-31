@@ -36,7 +36,7 @@
     <main>
     <script id="noteTemplate" type="text/mustache">
         <div class="note-header">
-            <span class="title">{{title}}</span>
+            <span contentEditable={{editing}} class="title">{{title}}</span>
             {{^editing}}
                 <a data-action="edit" class="fa fa-pencil" href="#"></a>
                 <a data-action="delete" class="fa fa-trash" href="#"></a>
@@ -46,7 +46,7 @@
                 <a data-action="cancel" class="fa fa-close" href="#"></a>
             {{/editing}}
         </div>
-        <div class="note-body">{{body}}</div>
+        <div contentEditable={{editing}} class="note-body">{{body}}</div>
     </script>
     <ul class="notes"></ul>
     </main>
