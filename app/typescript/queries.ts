@@ -79,7 +79,8 @@ module Queries {
         events() : bb.EventsHash {
             return {
                 "keyup #query" : this.keyUp,
-                "click #remove" : this.empty
+                "click #remove" : this.empty,
+                "click #search" : this.confirmQuery
             }
         }
 
@@ -93,18 +94,25 @@ module Queries {
                 this.list.append(v.el);
             });
 
+            this.searchBar.focus();
             return this;
         }
 
         private keyUp(event) {
             if (event.keyCode === 13) {
-                if (this.searchBar.val() !== "") {
-                    this.collection.add(new QueryModel(""));
-                    this.searchBar.val("");
-                }
+                this.confirmQuery();
             } else {
                 this.collection.last().setText(this.searchBar.val());
             }
+        }
+
+        private confirmQuery() {
+            let text = this.searchBar.val();
+            if (text.length == 0) {
+                return; // nothing to do
+            }
+            this.collection.add(new QueryModel("")); // new searchbar query
+            this.searchBar.val("");
         }
 
         private empty() {
