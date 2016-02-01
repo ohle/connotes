@@ -20,3 +20,10 @@ notes.add(note2);
 note2.setEditing(true);
 let filtered = new n.FilteredNotes(qs, notes);
 let nv = new n.NotesView({ collection : filtered, el: $('ul.notes') });
+
+$('#addNote').on("click", () => { 
+    let newNote = new n.NoteModel("title", "body");
+    notes.add(newNote, { at: 0 });
+    newNote.setEditing(true);
+});
+
