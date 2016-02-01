@@ -49,7 +49,12 @@
                 <a data-action="cancel" class="fa fa-close" href="#"></a>
             {{/editing}}
         </div>
-        <div contentEditable={{editing}} class="note-body">{{body}}</div>
+        {{^editing}}
+        <div class="note-body">{{body}}</div>
+        {{/editing}}
+        {{#editing}}
+        <textarea class="note-body">{{body}}</textarea>
+        {{/editing}}
     </script>
     <ul class="notes"></ul>
     </main>
