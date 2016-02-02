@@ -75,8 +75,8 @@ module Notes {
                     }
                 },
                 'click [data-action="done"]' : () => {
-                    let title = _.unescape(this.$('.title').html());
-                    let body = _.unescape(this.$('.note-body').html());
+                    let title = this.$('.title').val();
+                    let body = this.$('.note-body').val();
                     this.model.setTitle(title);
                     this.model.setBody(body);
                     this.model.setEditing(false);
