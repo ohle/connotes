@@ -10,7 +10,8 @@ html, body {
 }
 
 body {
-    .solarized-light();
+    background-color: @base2;
+    color: @base01;
     font: 16px;
     .flex-display();
     .flex-direction(column);
@@ -52,13 +53,14 @@ nav {
     input {
         .flex(1);
         padding: 3px;
-        border: 1px solid @base00;
+        border: 1px solid @base1;
         font-size: 16px;
         .solarized-light();
         border-right: 0px;
     }
     button {
-        border: 1px solid @base00;
+        background-color: @base0;
+        border: 1px solid @base1;
         border-radius: 0px;
     }
 }
@@ -72,8 +74,8 @@ ul.queries {
         list-style-type: none;
         margin: 3px;
         padding: 5px 10px 5px 10px;
-        background: @base1;
-        color: @base01;
+        background: @base02;
+        color: @base0;
         border-radius: 10px;
     }
     #remove {
@@ -97,7 +99,7 @@ ul.notes {
             padding: 3px;
             border: 1px solid @base00;
             background-color: @yellow;
-            color: @base00;
+            color: @base2;
             border-radius: 5px 5px 0px 0px;
             .title {
                 .flex(1);
@@ -114,6 +116,7 @@ ul.notes {
             border-width: 0px 1px 1px 1px;
             border-radius: 0px 0px 5px 5px;
             .solarized-light();
+            color: @base01;
         }
         textarea.note-body {
             resize: none;
@@ -121,6 +124,7 @@ ul.notes {
             height: 100%;
             font: inherit;
             box-sizing: border-box;
+            .solarized-light();
         }
     }
 }
