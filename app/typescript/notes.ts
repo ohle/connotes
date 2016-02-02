@@ -1,6 +1,7 @@
 /// <reference path="../typings/backbone/backbone.d.ts"/>
 /// <reference path="../typings/underscore/underscore.d.ts"/>
 /// <reference path="queries.ts"/>
+/// <reference path="util.ts"/>
 
 module Notes {
     import bb = Backbone;
@@ -52,14 +53,12 @@ module Notes {
         }
     }
 
-    export class NoteView extends bb.View<NoteModel> {
-        template : string;
+    export class NoteView extends Util.TemplatedView<NoteModel> {
 
         constructor(options) {
             options.tagName = "li";
             options.className = "note";
             super(options);
-            this.template = $('#noteTemplate').html();
         }
 
         initialize() {
@@ -87,11 +86,6 @@ module Notes {
                     }
                 }
             }
-        }
-
-        render() {
-            $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
-            return this;
         }
     }
 
