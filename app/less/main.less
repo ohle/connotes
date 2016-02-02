@@ -1,10 +1,7 @@
 @import "flexbox";
+@import "../vendor/less-solarized/solarized";
 @import "../vendor/font-awesome/less/font-awesome";
 @fa-font-path: "../vendor/font-awesome/fonts";
-
-@darkGray: #333333;
-@offWhite: #fafafa;
-@beige: #f7d492;
 
 html, body {
     min-height: 100vH;
@@ -13,7 +10,7 @@ html, body {
 }
 
 body {
-    background: @offWhite;
+    .solarized-light();
     font: 16px;
     .flex-display();
     .flex-direction(column);
@@ -31,8 +28,7 @@ a {
 
 header {
     margin: 0px;
-    background: @darkGray;
-    color: @offWhite;
+    .solarized-dark();
 }
 
 nav {
@@ -56,15 +52,13 @@ nav {
     input {
         .flex(1);
         padding: 3px;
-        background-color: lighten(@darkGray, 50%);
-        border: 1px solid lighten(@darkGray, 70%);
+        border: 1px solid @base00;
         font-size: 16px;
-        color: white;
+        .solarized-light();
         border-right: 0px;
     }
     button {
-        border: 1px solid darken(@darkGray, 110%);
-        border: 1px solid lighten(@darkGray, 70%);
+        border: 1px solid @base00;
         border-radius: 0px;
     }
 }
@@ -78,11 +72,12 @@ ul.queries {
         list-style-type: none;
         margin: 3px;
         padding: 5px 10px 5px 10px;
-        background: lighten(@darkGray, 50%);
+        background: @base1;
+        color: @base01;
         border-radius: 10px;
     }
     #remove {
-        background-color: red;
+        background-color: @red;
     }
 }
 
@@ -100,8 +95,9 @@ ul.notes {
         .note-header {
             .flex-display();
             padding: 3px;
-            border: 1px solid black;
-            background-color: @beige;
+            border: 1px solid @base00;
+            background-color: @yellow;
+            color: @base00;
             border-radius: 5px 5px 0px 0px;
             .title {
                 .flex(1);
@@ -113,11 +109,11 @@ ul.notes {
         }
         .note-body {
             padding: 3px;
-            background-color: white;
             border-style: solid;
-            border-color: black;
+            border-color: @base00;
             border-width: 0px 1px 1px 1px;
             border-radius: 0px 0px 5px 5px;
+            .solarized-light();
         }
         textarea.note-body {
             resize: none;
@@ -132,5 +128,5 @@ ul.notes {
 #filteredCount {
     margin: 10px;
     font-size : 0.8em;
-    color: @darkGray;
+    .solarized-light()
 }
