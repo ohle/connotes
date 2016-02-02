@@ -24,6 +24,4 @@ let nv = new n.NotesView({ collection : filtered, el: $('ul.notes') });
 $('#addNote').on("click", () => { 
     let newNote = new n.NoteModel("title", "body");
     notes.add(newNote, { at: 0 });
-    newNote.setEditing(true);
 });
-

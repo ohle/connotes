@@ -138,6 +138,11 @@ module Notes {
             this.notes = notes;
 
             this.listenTo(queries, "change add reset", this.update);
+            this.listenTo(queries, "add", () => {
+                if (queries.length == 2 && this.length == 0) {
+                    notes.add(new NoteModel(queries.first().getText(), "body"), { at: 0 });
+                }
+            });
             this.listenTo(notes, "change add reset", this.update);
             // remove events have to be handled separately because of
             // backbone Bug #3693 https://github.com/jashkenas/backbone/issues/3693
