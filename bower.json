@@ -6,6 +6,7 @@
     "backbone": "~1.2.3",
     "font-awesome": "fontawesome#~4.5.0",
     "mustache.js": "mustache#~2.2.1",
-    "less-solarized": "*"
+    "less-solarized": "*",
+    "Backbone.dualStorage": "^1.4.0"
   }
 }
