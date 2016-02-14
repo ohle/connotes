@@ -1,10 +1,14 @@
 ///<reference path="../typings/backbone/backbone.d.ts"/>
 
-declare module Backbone.dualStorage {
+declare module Backbone {
 
-    interface DualStorage {
-        offlineStatusCodes : number[];
+    class DualStorage {
+        static offlineStatusCodes : number[];
     }
+
+}
+
+declare module BBDualStorage {
 
     class Model extends Backbone.Model {
         hasTempId() : boolean;
@@ -23,3 +27,5 @@ declare module Backbone.dualStorage {
     }
 
 }
+
+// Backbone.DualStorage : DualStorage;
