@@ -1,6 +1,6 @@
-/// <reference path="../typings/jquery/jquery.d.ts"/>
-/// <reference path="notes.ts"/>
-/// <reference path="queries.ts"/>
+///<reference path="../typings/jquery/jquery.d.ts"/>
+///<reference path="notes.ts"/>
+///<reference path="queries.ts"/>
 ///<reference path="backbone.dualStorage.d.ts"/>
 
 import q = Queries;
