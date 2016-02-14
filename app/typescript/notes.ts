@@ -80,6 +80,7 @@ module Notes {
                     this.model.setTitle(title);
                     this.model.setBody(body);
                     this.model.setEditing(false);
+                    this.model.save();
                 },
                 'click [data-action="cancel"]' : () => {
                     if (window.confirm("Cancel editing?")) {
