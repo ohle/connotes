@@ -17,8 +17,16 @@ let qs = new Backbone.Collection<q.QueryModel>();
 
 let aq = new q.QueriesView({collection : qs, el: $('header')});
 
-let notes = new Backbone.Collection<n.NoteModel>();
-notes.url = "foo"; // bogus for now
+class NoteCollection extends Backbone.Collection<n.NoteModel> {
+    constructor(url : string) {
+        super();
+        this.url = url;
+    }
+
+    model = n.NoteModel;
+}
+
+let notes = new NoteCollection("foo"); // bogus URL for now
 notes.fetch();
 
 let filtered = new n.FilteredNotes(qs, notes);
