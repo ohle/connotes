@@ -135,11 +135,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    wiredep: {
-      target: {
-        src: [ '<%= yeoman.app %>/index.html' ]
-      }
-    },
     uglify: {
       dist: {
         files: {
@@ -284,7 +279,6 @@ module.exports = function (grunt) {
     if (target === 'test') {
       return grunt.task.run([
         'clean:server',
-        'wiredep',
         'connect:test',
         'open:test',
         'less:dev',
@@ -294,7 +288,6 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
       'typescript',
       'connect:livereload',
       'connect:test',
@@ -308,7 +301,6 @@ module.exports = function (grunt) {
     isConnected = Boolean(isConnected);
     var testTasks = [
         'clean:server',
-        'wiredep',
         'typescript',
         'connect:test',
         'mocha'
@@ -325,7 +317,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
     'less:dist',
     'typescript',
     'useminPrepare',
