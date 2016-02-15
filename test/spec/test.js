@@ -59,10 +59,14 @@
       var notes = new Backbone.Collection();
       var queries = new Backbone.Collection();
 
-      var fooBar = new Notes.NoteModel('Foo', 'Bar');
-      var bazQuux = new Notes.NoteModel('Baz', 'Quux');
-      var barFrob = new Notes.NoteModel('Bar', 'Frobnicate');
-      var test = new Notes.NoteModel('Test', 'Note');
+      var fooBar = new Notes.NoteModel();
+      fooBar.setTitle('Foo').setBody('Bar');
+      var bazQuux = new Notes.NoteModel();
+      bazQuux.setTitle('Baz').setBody('Quux');
+      var barFrob = new Notes.NoteModel();
+      barFrob.setTitle('Bar').setBody('Frobnicate');
+      var test = new Notes.NoteModel();
+      test.setTitle('Test').setBody('Note');
       notes.add(fooBar);
       notes.add(bazQuux);
       notes.add(barFrob);
@@ -110,7 +114,8 @@
       it('should react to added and removed notes', function() {
           setQueries(['Foo']);
           expect(fn.length).to.be.equal(1);
-          var n = new Notes.NoteModel("Test", "Food");
+          var n = new Notes.NoteModel();
+          n.setTitle('Test').setBody('Food');
           notes.add(n);
           expect(fn.length).to.be.equal(2);
           expect(fn.contains(n)).to.be.true;

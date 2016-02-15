@@ -20,27 +20,22 @@ module Notes {
         body : string;
         editing : boolean;
 
-        constructor(title : string, body : string) {
-            super();
-            this.setTitle(title);
-            this.setBody(body);
-            this.setEditing(false);
-        }
-
         getTitle() : string {
             return super.get("title");
         }
 
-        setTitle(t : string) {
+        setTitle(t : string) : NoteModel {
             super.set("title", t);
+            return this;
         }
 
         getBody(): string {
             return super.get("body");
         }
 
-        setBody(b : string) {
+        setBody(b : string) : NoteModel {
             super.set("body", b);
+            return this;
         }
 
         isBeingEdited() {
