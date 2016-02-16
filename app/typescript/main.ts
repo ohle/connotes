@@ -33,6 +33,7 @@ let filtered = new n.FilteredNotes(qs, notes);
 let nv = new n.NotesView({ collection : filtered, el: $('ul.notes') });
 
 $('#addNote').on("click", () => { 
-    let newNote = new n.NoteModel("title", "body");
+    let newNote = new n.NoteModel();
+    newNote.setTitle("Title").setBody("Body");
     notes.create(newNote);
 });
