@@ -97,7 +97,7 @@ module Notes {
         initialize() {
             this.render();
 
-            this.listenTo(this.collection, "add change reset", this.render);
+            this.listenTo(this.collection, "add reset", this.render);
         }
 
         render() {
