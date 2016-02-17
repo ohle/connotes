@@ -98,6 +98,7 @@ module Notes {
             this.render();
 
             this.listenTo(this.collection, "add reset", this.render);
+            this.listenTo(this.collection, "add remove", this.updateCount);
         }
 
         render() {
@@ -107,6 +108,10 @@ module Notes {
                 nv.render();
                 this.$el.append(nv.el);
             });
+            return this;
+        }
+
+        updateCount() {
             if (this.collection instanceof FilteredNotes) {
                 let fn = <FilteredNotes> this.collection;
                 let count = fn.countFiltered();
