@@ -60,6 +60,10 @@ module Notes {
         initialize() {
             this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "remove", this.remove);
+            this.listenTo(this.model, "change:editing", () => {
+                console.log('focusing');
+                this.$('.title').focus();
+            });
         }
 
         events() {
@@ -87,6 +91,7 @@ module Notes {
         }
 
         render() {
+            console.log('rendering');
             $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
             return this;
         }
@@ -97,16 +102,14 @@ module Notes {
         initialize() {
             this.render();
 
-            this.listenTo(this.collection, "add reset", this.render);
+            this.listenTo(this.collection, "reset", this.render);
             this.listenTo(this.collection, "add remove", this.updateCount);
         }
 
         render() {
             this.$el.empty();
             this.collection.each( (n : NoteModel, idx : number) => {
-                let nv = new NoteView({ model : n });
-                nv.render();
-                this.$el.append(nv.el);
+                this.addNote(n);
             });
             return this;
         }
@@ -121,7 +124,12 @@ module Notes {
                     $('#filteredCount').html('');
                 }
             }
-            return this;
+        }
+
+        addNote(n: NoteModel) {
+            let nv = new NoteView({ model : n });
+            nv.render();
+            this.$el.append(nv.el);
         }
     }
 
@@ -184,13 +192,16 @@ module Notes {
                 this.reset(this.notes.models);
                 return;
             }
-            this.reset();
+            // this.reset();
+            let filtered = new Array<NoteModel>();
                                    
             this.notes.forEach( (n : NoteModel, idx :number) => {
                 if (_.every(nonEmptyQueries,  q => this.matches(q, n))) {
-                    this.add(n); // will be ignored if already in
+                    filtered.push(n); // will be ignored if already in
                 } 
             });
+            this.remove(_.difference(this.models, filtered));
+            this.add(_.difference(filtered, this.models));
         }
 
         // Would be obsolete if not for backbone bug, see above
