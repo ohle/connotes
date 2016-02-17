@@ -143,6 +143,7 @@ module Notes {
                     );
                 }
             });
+            this.listenTo(notes, "change:editing", this.updateEditing);
             this.listenTo(notes, "change add reset", this.update);
             // remove events have to be handled separately because of
             // backbone Bug #3693 https://github.com/jashkenas/backbone/issues/3693
@@ -153,6 +154,14 @@ module Notes {
 
         countFiltered() : number {
             return this.notes.length - this.length;
+        }
+
+        private updateEditing(n : NoteModel) {
+            if (n.isBeingEdited()) {
+                this.without(n).forEach( (other, idx) => {
+                    other.setEditing(false);
+                });
+            }
         }
 
         // Just rebuild the filtered list on every change to the notes or

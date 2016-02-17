@@ -36,4 +36,5 @@ $('#addNote').on("click", () => {
     let newNote = new n.NoteModel();
     newNote.setTitle("Title").setBody("Body");
     notes.create(newNote);
+    newNote.setEditing(true);
 });
