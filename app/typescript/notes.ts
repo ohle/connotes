@@ -59,6 +59,7 @@ module Notes {
 
         initialize() {
             this.listenTo(this.model, "change", this.render);
+            this.listenTo(this.model, "remove", this.remove);
         }
 
         events() {
@@ -96,7 +97,7 @@ module Notes {
         initialize() {
             this.render();
 
-            this.listenTo(this.collection, "add remove change reset", this.render);
+            this.listenTo(this.collection, "add change reset", this.render);
         }
 
         render() {
