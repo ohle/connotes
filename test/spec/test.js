@@ -145,5 +145,12 @@
           setQueries(['flskjfdljsdflj']);
           expect(fn.countFiltered()).to.be.equal(notes.length);
       });
+
+      it('should react properly to changes', function() {
+          setQueries(['Bar']);
+          expect(fn.countFiltered()).to.be.equal(2);
+          queries.at(0).setText('Ba');
+          expect(fn.countFiltered()).to.be.equal(1);
+      });
   });
 }());
