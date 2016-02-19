@@ -103,6 +103,7 @@ module Notes {
             this.render();
 
             this.listenTo(this.collection, "reset", this.render);
+            this.listenTo(this.collection, "add", this.addNote);
             this.listenTo(this.collection, "add remove", this.updateCount);
         }
 
