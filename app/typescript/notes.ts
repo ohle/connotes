@@ -60,10 +60,6 @@ module Notes {
         initialize() {
             this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "remove", this.remove);
-            this.listenTo(this.model, "change:editing", () => {
-                console.log('focusing');
-                this.$('.title').focus();
-            });
         }
 
         events() {
@@ -91,8 +87,12 @@ module Notes {
         }
 
         render() {
-            console.log('rendering');
             $(this.el).html(Mustache.render(this.template, this.model.toJSON()));
+            if (this.model.isBeingEdited()) {
+                if (!this.$('.note-body').is(':focus')) {
+                    this.$('.title').focus().select();
+                }
+            }
             return this;
         }
     }
