@@ -44,6 +44,7 @@ module Notes {
 
         setEditing(e : boolean) {
             super.set("editing", e);
+            return this;
         }
     }
 
@@ -151,11 +152,11 @@ module Notes {
             this.listenTo(queries, "change add reset", this.update);
             this.listenTo(queries, "add", () => {
                 if (queries.length == 2 && this.length == 0) {
-                    notes.add(
-                        new NoteModel()
+                    let n = new NoteModel()
                             .setTitle(queries.first().getText())
-                            .setBody("body"), { at: 0 }
-                    );
+                            .setBody("body")
+                    notes.add(n, { at: 0 });
+                    n.setEditing(true);
                 }
             });
             this.listenTo(notes, "change:editing", this.updateEditing);
