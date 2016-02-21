@@ -190,7 +190,8 @@ module Notes {
         private updateWithQueries(queries : Queries.QueryModel[]) {
             let nonEmptyQueries = queries.filter( (q, i) => q.getText().length > 0 );
             if (nonEmptyQueries.length == 0) {
-                this.reset(this.notes.models);
+                // re-add all missing models
+                this.add(_.difference(this.notes.models, this.models));
                 return;
             }
             // this.reset();
