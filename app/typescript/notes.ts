@@ -63,6 +63,17 @@ module Notes {
         }
     }
 
+    export class FilteredCountView extends bb.View<FilteredCount> {
+        initialize() {
+            this.listenTo(this.model, "change", this.render);
+        }
+
+        render() {
+            this.$el.html(String(this.model.getCount()));
+            return this;
+        }
+    }
+
     export class NoteView extends bb.View<NoteModel> {
         template : string;
 
