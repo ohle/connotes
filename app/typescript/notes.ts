@@ -48,6 +48,17 @@ module Notes {
         }
     }
 
+    export class FilteredCount extends bb.Model {
+        getCount() : number {
+            return super.get("count");
+        }
+
+        setCount(c : number) {
+            super.set("count", c);
+            return this;
+        }
+    }
+
     export class NoteView extends bb.View<NoteModel> {
         template : string;
 
@@ -142,12 +153,15 @@ module Notes {
     export class FilteredNotes extends bb.Collection<NoteModel> {
         queries : bb.Collection<Queries.QueryModel>;
         notes :  bb.Collection<NoteModel>;
+        countModel : FilteredCount;
 
         constructor(queries : bb.Collection<Queries.QueryModel>,
-                    notes : bb.Collection<NoteModel>) {
+                    notes : bb.Collection<NoteModel>,
+                    countModel? : FilteredCount) {
             super(notes.models);
             this.queries = queries;
             this.notes = notes;
+            this.countModel = countModel;
 
             this.listenTo(queries, "change add reset", this.update);
             this.listenTo(queries, "add", () => {
@@ -205,6 +219,9 @@ module Notes {
             });
             this.remove(_.difference(this.models, filtered));
             this.add(_.difference(filtered, this.models));
+            if (this.countModel) {
+                this.countModel.setCount(this.notes.length - this.length);
+            }
         }
 
         // Would be obsolete if not for backbone bug, see above
