@@ -1,6 +1,6 @@
-/// <reference path="../typings/backbone/backbone.d.ts"/>
-/// <reference path="../typings/underscore/underscore.d.ts"/>
-/// <reference path="../typings/mustache/mustache.d.ts"/>
+///<reference path="../typings/backbone/backbone.d.ts"/>
+///<reference path="../typings/underscore/underscore.d.ts"/>
+///<reference path="../typings/mustache/mustache.d.ts"/>
 
 module Queries {
     import bb = Backbone;
