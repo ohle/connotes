@@ -131,7 +131,6 @@ module Notes {
 
             this.listenTo(this.collection, "reset", this.render);
             this.listenTo(this.collection, "add", this.addNote);
-            this.listenTo(this.collection, "add remove", this.updateCount);
         }
 
         render() {
@@ -140,18 +139,6 @@ module Notes {
                 this.addNote(n);
             });
             return this;
-        }
-
-        updateCount() {
-            if (this.collection instanceof FilteredNotes) {
-                let fn = <FilteredNotes> this.collection;
-                let count = fn.countFiltered();
-                if (count > 0) {
-                    $('#filteredCount').html(fn.countFiltered() + " notes filtered");
-                } else {
-                    $('#filteredCount').html('');
-                }
-            }
         }
 
         addNote(n: NoteModel) {
@@ -195,10 +182,6 @@ module Notes {
             this.listenTo(queries, "remove", this.removeQuery);
             this.listenTo(notes, "remove", this.removeNote);
             this.update();
-        }
-
-        countFiltered() : number {
-            return this.notes.length - this.length;
         }
 
         private updateEditing(n : NoteModel) {
