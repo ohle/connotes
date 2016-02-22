@@ -49,6 +49,10 @@ module Notes {
     }
 
     export class FilteredCount extends bb.Model {
+        initialize() {
+            this.setCount(0);
+        }
+
         getCount() : number {
             return super.get("count");
         }
@@ -219,14 +223,18 @@ module Notes {
             });
             this.remove(_.difference(this.models, filtered));
             this.add(_.difference(filtered, this.models));
-            if (this.countModel) {
-                this.countModel.setCount(this.notes.length - this.length);
-            }
         }
 
         // Would be obsolete if not for backbone bug, see above
         private update() {
             this.updateWithQueries(this.queries.models);
+            this.updateCount();
+        }
+
+        private updateCount() {
+            if (this.countModel) {
+                this.countModel.setCount(this.notes.length - this.length);
+            }
         }
 
         private removeQuery(removed : Queries.QueryModel) {
