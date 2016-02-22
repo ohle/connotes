@@ -69,7 +69,13 @@ module Notes {
         }
 
         render() {
-            this.$el.html(String(this.model.getCount()));
+            let count = this.model.getCount();
+            if (count == 0) {
+                this.$el.hide();
+            } else {
+                this.$el.html(count + " notes filtered");
+                this.$el.show();
+            }
             return this;
         }
     }
