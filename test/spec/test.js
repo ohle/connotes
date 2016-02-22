@@ -58,6 +58,7 @@
   describe('FilteredNotes', function() {
       var notes = new Backbone.Collection();
       var queries = new Backbone.Collection();
+      var countModel = new Notes.FilteredCount();
 
       var fooBar = new Notes.NoteModel();
       fooBar.setTitle('Foo').setBody('Bar');
@@ -72,7 +73,7 @@
       notes.add(barFrob);
       notes.add(test);
 
-      var fn = new Notes.FilteredNotes(queries, notes);
+      var fn = new Notes.FilteredNotes(queries, notes, countModel);
 
       var setQueries = function(texts) {
           queries.reset(_.map(texts, function(text) {
@@ -141,16 +142,16 @@
 
       it('should report number of filtered notes', function() {
           setQueries([]);
-          expect(fn.countFiltered()).to.be.equal(0);
+          expect(countModel.getCount()).to.be.equal(0);
           setQueries(['flskjfdljsdflj']);
-          expect(fn.countFiltered()).to.be.equal(notes.length);
+          expect(countModel.getCount()).to.be.equal(notes.length);
       });
 
       it('should react properly to changes', function() {
           setQueries(['Bar']);
-          expect(fn.countFiltered()).to.be.equal(2);
+          expect(countModel.getCount()).to.be.equal(2);
           queries.at(0).setText('Ba');
-          expect(fn.countFiltered()).to.be.equal(1);
+          expect(countModel.getCount()).to.be.equal(1);
       });
   });
 }());
