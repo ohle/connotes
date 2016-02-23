@@ -45,7 +45,7 @@
                 <a data-action="delete" class="fa fa-trash" href="#"></a>
             {{/editing}}
             {{#editing}}
-                <input type=text class="title" value={{title}}></input>
+                <input type=text class="title" tabindex=1 value={{title}}></input>
                 <a data-action="done" class="fa fa-check" href="#"></a>
                 <a data-action="cancel" class="fa fa-close" href="#"></a>
             {{/editing}}
@@ -54,7 +54,7 @@
             <pre class="note-body">{{body}}</pre>
         {{/editing}}
         {{#editing}}
-            <textarea class="note-body">{{body}}</textarea>
+            <textarea class="note-body" tabindex=2>{{body}}</textarea>
         {{/editing}}
     </script>
     <ul class="notes"></ul>
